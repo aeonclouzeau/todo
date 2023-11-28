@@ -6,9 +6,13 @@ import axios from "axios";
 function Home() {
 	const [todos, setTodo] = useState([]);
 	useEffect(() => {
+		console.log("Before API call: " + todos);
 		axios
 			.get("http://localhost:3001/get")
-			.then((result) => setTodo(result.data))
+			.then((result) => {
+				setTodo(result.data);
+				console.log("After API call" + todos);
+			})
 			.catch((err) => console.warn(err));
 	}, []);
 	return (
@@ -22,7 +26,10 @@ function Home() {
 				</div>
 			) : (
 				todos.map((todo) => {
-					<div>{todo}</div>;
+					<div>
+						<p>{todo.task}</p>
+					</div>;
+					console.log(todos);
 				})
 			)}
 		</div>
