@@ -25,12 +25,11 @@ function Home() {
 					<h3>No tasks added</h3>
 				</div>
 			) : (
-				todos.map((todo) => {
-					<div>
+				todos.map((todo, index) => (
+					<div key={index}>
 						<p>{todo.task}</p>
-					</div>;
-					console.log(todos);
-				})
+					</div>
+				))
 			)}
 		</div>
 	);
